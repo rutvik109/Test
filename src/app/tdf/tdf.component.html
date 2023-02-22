@@ -9,11 +9,13 @@
         name="fname"
         placeholder="Enter First Name"
         [(ngModel)]="user.fname"
-        [class.is-invalid] = "fname.invalid && fname.touched"
+        [class.is-invalid]="fname.invalid && fname.touched"
         required
       />
-      <div>
-        <small>First Name is required</small>
+      <div *ngIf="fname.invalid && fname.touched">
+        <small [class.d-none]="fname.valid || fname.untouched"
+          >First Name is required</small
+        >
       </div>
     </div>
     <div class="form-group mb-3">
@@ -26,7 +28,7 @@
         placeholder="Enter Middle Name"
         [(ngModel)]="user.mname"
         required
-        [class.is-invalid] = "mname.invalid && mname.touched"
+        [class.is-invalid]="mname.invalid && mname.touched"
       />
     </div>
     <div class="form-group mb-3">
@@ -37,7 +39,7 @@
         #lname="ngModel"
         name="lname"
         placeholder="Enter Last Name"
-        [class.is-invalid] = "lname.invalid && lname.touched"
+        [class.is-invalid]="lname.invalid && lname.touched"
         [(ngModel)]="user.lname"
         required
       />
@@ -49,7 +51,7 @@
         #textarea="ngModel"
         rows="3"
         name="textarea"
-        [(ngModel)]="user.fname+' '+user.mname+' '+user.lname"
+        [(ngModel)]="user.fname + ' ' + user.mname + ' ' + user.lname"
         disabled
       ></textarea>
     </div>
@@ -62,7 +64,7 @@
         name="age"
         onkeypress="return event.charCode >= 48 && event.charCode <= 57"
         [(ngModel)]="user.age"
-        [class.is-invalid] = "age.invalid && age.touched"
+        [class.is-invalid]="age.invalid && age.touched"
         required
       />
     </div>
@@ -98,7 +100,7 @@
           <input
             class="form-check-input"
             type="checkbox"
-           name="cricket"
+            name="cricket"
             value="option1"
             [(ngModel)]="user.hobby.cricket"
           />
@@ -145,18 +147,33 @@
           <label class="form-check-label">Treaking</label>
         </div>
       </div>
-      </div>
-     
+    </div>
 
     <div class="form-group mb-3">
       <label class="form-label">Company List</label><br />
-      <select class="form-select" aria-label="Default select example"  name="company" required [(ngModel)]="user.company">
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        name="company"
+        required
+        [(ngModel)]="user.company"
+      >
         <option selected>Open this select menu</option>
-        <option *ngFor="let topic of company"> {{topic}} </option>
+        <option *ngFor="let topic of company">{{ topic }}</option>
       </select>
     </div>
-    <button class="btn btn-primary btn-lg" type="button" (click) = "OnBack()">Back</button>
-    <button class="btn btn-danger btn-lg" type="button" (click)="OnClear()">Clear</button>
-    <button class="btn btn-success btn-lg" type="submit" [disabled]="tdfForm.invalid">Submit</button>
+    <button class="btn btn-primary btn-lg" type="button" (click)="OnBack()">
+      Back
+    </button>
+    <button class="btn btn-danger btn-lg" type="button" (click)="OnClear()">
+      Clear
+    </button>
+    <button
+      class="btn btn-success btn-lg"
+      type="submit"
+      [disabled]="tdfForm.invalid"
+    >
+      Submit
+    </button>
   </form>
 </div>
