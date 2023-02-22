@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder , Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../local-storage.service';
 import { Router } from '@angular/router';
@@ -17,12 +17,12 @@ export class ReactiveComponent {
     private router: Router
   ) {
     this.user = this.fb.group({
-      fname: '',
-      mname: '',
-      lname: '',
+      fname: ['' , [Validators.required]],
+      mname: ['' , [Validators.required]],
+      lname: ['' , [Validators.required]],
       textarea: '',
-      age: '',
-      gender: '',
+      age: ['' , [Validators.required]],
+      gender: ['' , [Validators.required]],
       hobby: this.fb.group({
         cricket: '',
         dancing: '',
@@ -30,7 +30,7 @@ export class ReactiveComponent {
         singing: '',
         treaking: '',
       }),
-      company: '',
+      company: ['' , [Validators.required]],
     });
   }
 

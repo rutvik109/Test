@@ -147,6 +147,6 @@
     <button class="btn btn-primary btn-lg" type="button" (click)="OnLoad()">
       Load
     </button>
-    <button class="btn btn-success btn-lg" type="submit">Submit</button>
+    <button class="btn btn-success btn-lg" type="submit" [disabled]="user.invalid">Submit</button>
   </form>
 </div>

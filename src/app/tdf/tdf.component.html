@@ -13,7 +13,9 @@
         required
       />
       <div *ngIf="fname.invalid && fname.touched">
-        <small [class.d-none]="fname.valid || fname.untouched"
+        <small
+          class="text-danger"
+          [class.d-none]="fname.valid || fname.untouched"
           >First Name is required</small
         >
       </div>
@@ -30,6 +32,13 @@
         required
         [class.is-invalid]="mname.invalid && mname.touched"
       />
+      <div *ngIf="mname.invalid && mname.touched">
+        <small
+          class="text-danger"
+          [class.d-none]="mname.valid || mname.untouched"
+          >Middle Name is required</small
+        >
+      </div>
     </div>
     <div class="form-group mb-3">
       <label>Last Name:</label>
@@ -43,6 +52,13 @@
         [(ngModel)]="user.lname"
         required
       />
+      <div *ngIf="lname.invalid && lname.touched">
+        <small
+          class="text-danger"
+          [class.d-none]="lname.valid || lname.untouched"
+          >Last Name is required</small
+        >
+      </div>
     </div>
     <div class="mb-3">
       <label class="form-label">Example textarea</label>
@@ -67,6 +83,11 @@
         [class.is-invalid]="age.invalid && age.touched"
         required
       />
+      <div *ngIf="age.invalid && age.touched">
+        <small class="text-danger" [class.d-none]="age.valid || age.untouched"
+          >Age is required</small
+        >
+      </div>
     </div>
     <label class="form-label">Gender</label>
     <div class="form-check">
@@ -74,6 +95,7 @@
         class="form-check-input"
         type="radio"
         name="gender"
+        #gender="ngModel"
         [(ngModel)]="user.gender"
         value="male"
         required
@@ -85,11 +107,19 @@
         class="form-check-input"
         type="radio"
         name="gender"
+        #gender="ngModel"
         [(ngModel)]="user.gender"
         value="female"
         required
       />
       <label class="form-check-label"> FeMale </label>
+      <div *ngIf="gender.invalid && gender.touched">
+        <small
+          class="text-danger"
+          [class.d-none]="gender.valid || gender.untouched"
+          >Gender is required</small
+        >
+      </div>
     </div>
 
     <div class="mb-3">
@@ -155,12 +185,19 @@
         class="form-select"
         aria-label="Default select example"
         name="company"
+        #companyList="ngModel"
         required
         [(ngModel)]="user.company"
       >
-        <option selected>Open this select menu</option>
         <option *ngFor="let topic of company">{{ topic }}</option>
       </select>
+      <div *ngIf="companyList.invalid && companyList.touched">
+        <small
+          class="text-danger"
+          [class.d-none]="companyList.valid || companyList.untouched"
+          >Company is required</small
+        >
+      </div>
     </div>
     <button class="btn btn-primary btn-lg" type="button" (click)="OnBack()">
       Back
