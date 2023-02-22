@@ -20,6 +20,7 @@ export class ReactiveComponent {
       fname: '',
       mname: '',
       lname: '',
+      textarea: '',
       age: '',
       gender: '',
       hobby: this.fb.group({
@@ -57,47 +58,19 @@ export class ReactiveComponent {
 
   OnLoad() {
     console.log(this.data);
-    // this.user = this.fb.group({
-    //   fname: [this.data[0]['fname']],
-    //   mname: [this.data[0]['mname']],
-    //   lname: [this.data[0]['lname']],
-    //   age: [this.data[0]['age']],
-    //   gender: [this.data[0]['gender']],
-    //   hobby: this.fb.group({
-    //     cricket: [this.data[0]['hobby']['cricket']],
-    //     dancing: [this.data[0]['hobby']['dancing']],
-    //     reading: [this.data[0]['hobby']['reading']],
-    //     singing: [this.data[0]['hobby']['signing']],
-    //     treaking: [this.data[0]['hobby']['treaking']],
-    //   }),
-    //   company: [this.data[0]['company']],
-    // });
-
-    // this.user.setValue({
-    //   fname: [this.data[0]['fname']],
-    //   mname: [this.data[0]['mname']],
-    //   lname: [this.data[0]['lname']],
-    //   age: [this.data[0]['age']],
-    //   gender: this.data[0]['gender'],
-    //   hobby: {
-    //     cricket: [this.data[0]['hobby']['cricket']],
-    //     dancing: [this.data[0]['hobby']['dancing']],
-    //     reading: [this.data[0]['hobby']['reading']],
-    //     singing: [this.data[0]['hobby']['signing']],
-    //     treaking: [this.data[0]['hobby']['treaking']],
-    //   },
-    //   company: [this.data[0]['company']],
-    // });
-
+ 
       this.user.setValue({
       fname: [this.data[0]['fname']],
       mname: [this.data[0]['mname']],
       lname: [this.data[0]['lname']],
+      textarea : [this.data[0]['textarea']],
       age: [this.data[0]['age']],
       gender: this.data[0]['gender'],
       hobby: this.data[0]['hobby'],
       company: [this.data[0]['company']],
     });
+
+
   }
 
   OnSubmit() {
@@ -106,5 +79,28 @@ export class ReactiveComponent {
     const tmp = [user];
     this.localStorage.editItem(this.number, tmp);
     this.router.navigate(['Home']);
+  }
+
+  OnClear(){
+    this.user.setValue({
+      fname: '',
+      mname: '',
+      lname: '',
+      textarea : '',
+      age: '',
+      gender:'',
+      hobby: {
+        cricket: '',
+        dancing: '',
+        reading: '',
+        singing: '',
+        treaking: ''
+      },
+      company: '',
+    });
+  }
+
+  OnBack(){
+      this.router.navigate(['Home']);
   }
 }

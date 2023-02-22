@@ -36,7 +36,7 @@
         class="form-control"
         rows="3"
         name="textarea"
-        disabled
+        formControlName="textarea"
       ></textarea>
     </div>
     <div class="mb-3">
@@ -138,11 +138,15 @@
         <option *ngFor="let topic of company">{{ topic }}</option>
       </select>
     </div>
-    <button class="btn btn-success btn-lg" type="submit">Submit</button>
-    <!-- <button class="btn btn-danger btn-lg" type="button" >Clear</button> -->
-    <!-- <button class="btn btn-primary btn-lg" type="button">Back</button> -->
+    <button class="btn btn-primary btn-lg" type="button" (click)="OnBack()">
+      Back
+    </button>
+    <button class="btn btn-danger btn-lg" type="button" (click)="OnClear()">
+      Clear
+    </button>
     <button class="btn btn-primary btn-lg" type="button" (click)="OnLoad()">
       Load
     </button>
+    <button class="btn btn-success btn-lg" type="submit">Submit</button>
   </form>
 </div>

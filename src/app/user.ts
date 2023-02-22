@@ -4,6 +4,7 @@ export class User {
         public fname : string,
         public mname : string,
         public lname : string,
+        public textarea: string,
         public age : string,
         public gender : string,
         public hobby : {

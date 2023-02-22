@@ -12,6 +12,9 @@
         [class.is-invalid] = "fname.invalid && fname.touched"
         required
       />
+      <div>
+        <small>First Name is required</small>
+      </div>
     </div>
     <div class="form-group mb-3">
       <label>Middle Name:</label>
@@ -152,8 +155,8 @@
         <option *ngFor="let topic of company"> {{topic}} </option>
       </select>
     </div>
-    <button class="btn btn-success btn-lg" type="submit" [disabled]="tdfForm.invalid">Submit</button>
-    <button class="btn btn-danger btn-lg" type="button" (click)="OnClear()">Clear</button>
     <button class="btn btn-primary btn-lg" type="button" (click) = "OnBack()">Back</button>
+    <button class="btn btn-danger btn-lg" type="button" (click)="OnClear()">Clear</button>
+    <button class="btn btn-success btn-lg" type="submit" [disabled]="tdfForm.invalid">Submit</button>
   </form>
 </div>

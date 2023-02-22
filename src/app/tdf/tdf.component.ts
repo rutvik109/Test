@@ -29,7 +29,7 @@ export class TdfComponent {
   "Facebook",
  ]
 
-  user = new User("","","","","",{"cricket": "","dancing":"","reading":"","singing":"","treaking":""},"");
+  user = new User("","","","","","",{"cricket": "","dancing":"","reading":"","singing":"","treaking":""},"");
 
   userData : any[]= [];
 
@@ -41,13 +41,15 @@ export class TdfComponent {
 
   if (localStorage.getItem(this.number) != null) {
     this.data = JSON.parse(localStorage.getItem(this.number) || '{}');
-    this.user = new User(this.data[0]['fname'],this.data[0]['mname'],this.data[0]['lname'],this.data[0]['age'],this.data[0]['gender'],this.data[0]['hobby'],this.data[0]['company']);
+    this.user = new User(this.data[0]['fname'],this.data[0]['mname'],this.data[0]['lname'],this.data[0]['textarea'],this.data[0]['age'],this.data[0]['gender'],this.data[0]['hobby'],this.data[0]['company']);
   } 
  }
 
 
 
   OnSubmit(){
+    
+    this.user.textarea = this.user.fname + " "+ this.user.mname +" "+ this.user.lname;
     console.log(this.user);
     this.userData.push(this.user);
     this.localStorage.setItem(this.number,this.userData);
@@ -55,7 +57,7 @@ export class TdfComponent {
   }
 
   OnClear(){
-   this.user = new User("","","","","",{"cricket": "","dancing":"","reading":"","singing":"","treaking":""},"");
+   this.user = new User("","","","","","",{"cricket": "","dancing":"","reading":"","singing":"","treaking":""},"");
   }
 
   OnBack(){

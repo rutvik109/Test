@@ -14,6 +14,10 @@ export class HomeComponent {
     number: ['',[Validators.required]]
   })
 
+  get Number(){
+    return this.homeForm.controls['number'];
+  }
+
 
   OnSubmit(value:any){
     console.log(this.homeForm.value);
