@@ -1,0 +1,142 @@
+<div class="container" >
+  <form [formGroup]="user" (ngSubmit)="OnSubmit()">
+    <div class="form-group mb-3">
+      <label>First Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        name="fname"
+        formControlName="fname"
+        placeholder="Enter First Name"
+      />
+    </div>
+    <div class="form-group mb-3">
+      <label>Middle Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        name="mname"
+        formControlName="mname"
+        placeholder="Enter Middle Name"
+      />
+    </div>
+    <div class="form-group mb-3">
+      <label>Last Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        name="lname"
+        formControlName="lname"
+        placeholder="Enter Last Name"
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Example textarea</label>
+      <textarea
+        class="form-control"
+        rows="3"
+        name="textarea"
+        disabled
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Age</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="age"
+        name="age"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+      />
+    </div>
+    <label class="form-label">Gender</label>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="gender" formControlName="gender" value="male" />
+      <label class="form-check-label"> Male </label>
+    </div>
+    <div class="form-check mb-3">
+      <input
+        class="form-check-input"
+        type="radio"
+        formControlName="gender"
+        name="gender"
+        value="female"
+      />
+      <label class="form-check-label"> FeMale </label>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" formGroupName="hobby">Hobbies</label><br />
+
+      <div formGroupName="hobby">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            formControlName="cricket"
+            name="option1"
+           
+          />
+          <label class="form-check-label">Cricket</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            formControlName="dancing"
+            name="dancing"
+            value="option2"
+          />
+          <label class="form-check-label">Dancing</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="reading"
+            formControlName="reading"
+            value="option3"
+          />
+          <label class="form-check-label">Reading</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="singing"
+            formControlName="singing"
+            value="option4"
+          />
+          <label class="form-check-label">Singing</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="treaking"
+            formControlName="treaking"
+            value="option5"
+          />
+          <label class="form-check-label">Treaking</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label class="form-label">Company List</label><br />
+      <select
+        class="form-select"
+        formControlName="company"
+        aria-label="Default select example"
+        name="company"
+      >
+       
+        <option *ngFor="let topic of company"> {{topic}} </option>
+      </select>
+    </div>
+    <button class="btn btn-success btn-lg" type="submit">Submit</button>
+    <!-- <button class="btn btn-danger btn-lg" type="button" >Clear</button> -->
+    <!-- <button class="btn btn-primary btn-lg" type="button">Back</button> -->
+    <button class="btn btn-primary btn-lg" type="button" (click)="OnLoad()">Load</button>
+  </form>
+</div>

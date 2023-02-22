@@ -1,0 +1,10 @@
+<div class="container">
+    <form [formGroup]="homeForm" (ngSubmit)="OnSubmit(id.value)">
+        <div class="mb-3">
+          <label  class="form-label">Number</label>
+          <input type="number" #id class="form-control" [class.is-invalid] = "this.homeForm.controls['number'].invalid && this.homeForm.controls['number'].touched" formControlName="number" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required> 
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="homeForm.invalid">Submit</button>
+      </form> 
+</div>
+

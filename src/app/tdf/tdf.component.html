@@ -1,0 +1,159 @@
+<div class="container">
+  <form #tdfForm="ngForm" (ngSubmit)="OnSubmit()">
+    <div class="form-group mb-3">
+      <label>First Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        #fname="ngModel"
+        name="fname"
+        placeholder="Enter First Name"
+        [(ngModel)]="user.fname"
+        [class.is-invalid] = "fname.invalid && fname.touched"
+        required
+      />
+    </div>
+    <div class="form-group mb-3">
+      <label>Middle Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        #mname="ngModel"
+        name="mname"
+        placeholder="Enter Middle Name"
+        [(ngModel)]="user.mname"
+        required
+        [class.is-invalid] = "mname.invalid && mname.touched"
+      />
+    </div>
+    <div class="form-group mb-3">
+      <label>Last Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        #lname="ngModel"
+        name="lname"
+        placeholder="Enter Last Name"
+        [class.is-invalid] = "lname.invalid && lname.touched"
+        [(ngModel)]="user.lname"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Example textarea</label>
+      <textarea
+        class="form-control"
+        #textarea="ngModel"
+        rows="3"
+        name="textarea"
+        [(ngModel)]="user.fname+' '+user.mname+' '+user.lname"
+        disabled
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Age</label>
+      <input
+        type="number"
+        class="form-control"
+        #age="ngModel"
+        name="age"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+        [(ngModel)]="user.age"
+        [class.is-invalid] = "age.invalid && age.touched"
+        required
+      />
+    </div>
+    <label class="form-label">Gender</label>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="gender"
+        [(ngModel)]="user.gender"
+        value="male"
+        required
+      />
+      <label class="form-check-label"> Male </label>
+    </div>
+    <div class="form-check mb-3">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="gender"
+        [(ngModel)]="user.gender"
+        value="female"
+        required
+      />
+      <label class="form-check-label"> FeMale </label>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Hobbies</label><br />
+
+      <div ngModelGroup="hobby">
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+           name="cricket"
+            value="option1"
+            [(ngModel)]="user.hobby.cricket"
+          />
+          <label class="form-check-label">Cricket</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="dancing"
+            value="option2"
+            [(ngModel)]="user.hobby.dancing"
+          />
+          <label class="form-check-label">Dancing</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="reading"
+            value="option3"
+            [(ngModel)]="user.hobby.reading"
+          />
+          <label class="form-check-label">Reading </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="singing"
+            value="option4"
+            [(ngModel)]="user.hobby.singing"
+          />
+          <label class="form-check-label">Singing</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            name="treaking"
+            value="option5"
+            [(ngModel)]="user.hobby.treaking"
+          />
+          <label class="form-check-label">Treaking</label>
+        </div>
+      </div>
+      </div>
+     
+
+    <div class="form-group mb-3">
+      <label class="form-label">Company List</label><br />
+      <select class="form-select" aria-label="Default select example"  name="company" required [(ngModel)]="user.company">
+        <option selected>Open this select menu</option>
+        <option *ngFor="let topic of company"> {{topic}} </option>
+      </select>
+    </div>
+    <button class="btn btn-success btn-lg" type="submit" [disabled]="tdfForm.invalid">Submit</button>
+    <button class="btn btn-danger btn-lg" type="button" (click)="OnClear()">Clear</button>
+    <button class="btn btn-primary btn-lg" type="button" (click) = "OnBack()">Back</button>
+  </form>
+</div>
