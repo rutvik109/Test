@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TdfComponent } from './tdf/tdf.component';
 import { ReactiveComponent } from './reactive/reactive.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TdfComponent,
-    ReactiveComponent
+    ReactiveComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

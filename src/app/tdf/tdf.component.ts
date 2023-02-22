@@ -33,6 +33,18 @@ export class TdfComponent {
 
   userData : any[]= [];
 
+  data : any[] = [];
+
+
+ ngOnInit(){
+ 
+
+  if (localStorage.getItem(this.number) != null) {
+    this.data = JSON.parse(localStorage.getItem(this.number) || '{}');
+    this.user = new User(this.data[0]['fname'],this.data[0]['mname'],this.data[0]['lname'],this.data[0]['age'],this.data[0]['gender'],this.data[0]['hobby'],this.data[0]['company']);
+  } 
+ }
+
 
 
   OnSubmit(){

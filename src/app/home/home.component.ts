@@ -17,12 +17,12 @@ export class HomeComponent {
 
   OnSubmit(value:any){
     console.log(this.homeForm.value);
-    this.router.navigate(["Home/"+value]);
+    // this.router.navigate(["Home/"+value]);
 
-    // if (localStorage.getItem(value) != null) {
-    //   this.router.navigate(['Home/' + value]);
-    // } else {
-    //   this.router.navigate(['reactive/' + value]);
-    // }
+    if (localStorage.getItem(value) != null) {
+      this.router.navigate(['Home/' + value]);
+    } else {
+      this.router.navigate(['Home/' + value]);
+    }
   }
 }
